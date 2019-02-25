@@ -1,0 +1,84 @@
+{% extends 'base.html' %} <!--모든 태그에서 가장 우선순위가 높다. 따라서, 가장 먼저 사용해주면 된다.-->
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ko">
+<body>
+
+  {% block contents %} <!-- html 각자의 내용을 담아주기 위한 코드의 시작을 나타냄-->
+  <br><br>
+     {% for blog in posts %} <!--하나의 페이지를 대상으로 for문을 돌자. -->
+      <div class = "container">
+        <div class="card">
+        <div class="card">
+        <div class="card-body">
+        <strong><h3 style = "color:red;" class="card-title">{{ blog.title }}</h4></strong>
+        <h6 class="card-subtitle mb-2 text-muted">{{ blog.pub_date }}</h6>
+        <p class="card-text">{{blog.summary}}</p>
+        
+          <a href="{% url 'detail' blog.id %}" class="card-link">
+            <button type="button" class="btn btn-primary" style="color:beige;">Card link</button>
+         </a>
+        
+        <!-- <a href="#" class="card-link">Another link</a> -->
+        </div>
+      </div>
+  </div>
+</div>
+<br>
+{% endfor %}
+{# ============================================================================================================== #}    
+{# 아래는 페이지의 위치에 대한 navigator에 대한 코드이다 #}
+{# 형태는 First Previous 3of4 Next Last #}
+
+<div class="container">
+  <p class="text-light bg-dark">
+    <button type="button" class="btn btn-dark">  
+        {# First Previous #}
+        {% if posts.has_previous %} {# 만약 previous posts가 있다면 #}
+        <a href="?page=1">First</a>
+        <a href="?page={{posts.previous_page_number}}">Previous</a>
+        {% endif %}
+      </button>
+  </p>
+
+
+
+  {# 3of4 #}
+  <span>{{posts.number}}</span> {# 내가 현재 보고있는 포스트에 해당하는 페이지의 번호가 출력된다. #}
+  <span>of</span>
+  <span>{{posts.paginator.num_pages}}</span>
+
+  {# Next Last #}
+  <p class="text-light bg-dark">
+    <button type="button" class="btn btn-dark">  
+    {% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}">Next</a>
+    <a href="?page={{posts.paginator.num_pages}}">Last</a> {# 'paginator.num_pages'는 전체 페이지 수를 반환하는 코드 #}
+    {% endif %}
+    </button>
+  </p>
+</div>
+
+
+<!-- <div class="container">
+{% for blog in blogs.all %}
+    <div class="container">
+        
+      <br><br>
+      <h3>{{ blog.title }}</h3><br>
+      <h2>{{ blog.pub_date }}</h2>
+      <p>{{ blog.body }}</p>
+      <p>{{blog.summary}}<a href = "{% url 'detail' blog.id %}">...more</a></p> 
+        
+        
+    </div>
+    {% endfor %}
+</div> -->
+
+
+    <br><br>
+    
+</body>
+{% endblock %} <!-- html 각자의 내용을 담아주기 위한 코드의 끝을 나타냄-->
+
+</html>

@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login_page</title>
+</head>
+
+{% block contents %}
+<body>
+
+
+<div class="container" style="color:skyblue;">
+
+<h1>Login</h1>
+
+<form method="POST" action="{% url 'login' %}">
+    {% csrf_token %}
+    Username:
+    <br>
+    <input name = "username" type="text" value="">
+    <br><br>
+    Password:
+    <br>
+    <input name="password" type="password" value="">
+    <br>
+    <br>
+    <input class="btn btn-primary" type = "submit" value="Login">
+
+</form>
+
+</div>
+
+</body>
+{%endblock%}
+</html>
