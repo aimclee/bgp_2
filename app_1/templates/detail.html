@@ -22,10 +22,11 @@
     
 <br>
 <div class="container">
-  <h1>디테일 페이지입니다.</h1>
+  <h1 style="color:beige;">디테일 페이지입니다.</h1>
 <br>
   <div class="container jumbotron">
-    <h1>{{ blog.title }}</h1>
+    <h1 style="color:red;" >{{ blog.title }}</h1>
+      
       <p>{{ blog.pub_date }}</p>
       <p>{{ blog.body }}</p>
     </div>
@@ -33,7 +34,9 @@
  
   <div class = "container">
     <p>
-      <a href = "{% url 'home' %}">Home으로</a> 
+      <a href="{% url 'home' %}">
+          <button type="button" class="btn btn-primary" style="color:beige;">Home</button>
+      </a>
       <!--장고가 url을 관리하기 때문에 파이썬 템플릿태그를 사용해주어야 한다.-->
     </p>
   </div>

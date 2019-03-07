@@ -8,4 +8,5 @@ urlpatterns = [
     path('create/', app_1.views.create, name = 'create'),
     path('newblog/', app_1.views.blogpost, name = 'newblog'),
     path('about/', app_1.views.about, name = 'about'),
+    path('attribution', app_1.views.attribution, name='attribution'),
 ]

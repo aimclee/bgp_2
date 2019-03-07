@@ -1,4 +1,8 @@
 {% extends 'base.html' %}
+{% load socialaccount %}
+{% load staticfiles %}
+{% providers_media_js %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +35,14 @@
     <br><br>
 </form>
 <a class="btn btn-info" href="{% url 'signup' %}">Don't you have any account? Sign up here! </a>
+<br><br>
+<p>
+---------------------------------------------------- </p>
+<h1>Social Login</h1> 
+<br>
+<a href="{% provider_login_url 'google' %}">
+    <img src = "{% static 'search.png' %}" > </a>
+
 </div>
 
 </body>

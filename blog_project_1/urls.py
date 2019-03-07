@@ -32,7 +32,9 @@ urlpatterns = [
     path('certificate/', portfolio.views.certificate, name='certificate'),
 
     path('account/', include('account.urls')), # account/로 들어오고, account폴더의 urls.py라는 새로운 파일을 참조하면 된다.
+    path('accounts/', include('allauth.urls')),
 ] 
+
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
